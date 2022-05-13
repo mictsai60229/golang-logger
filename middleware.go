@@ -4,6 +4,7 @@ import (
 	"bytes"
 
 	"github.com/gin-gonic/gin"
+	"github.com/mictsai60229/golang-logger/helper"
 )
 
 func LoggerMiddleware() gin.HandlerFunc {
@@ -30,7 +31,7 @@ func LoggerMiddleware() gin.HandlerFunc {
 
 func LogRequest(request RequestInterface) {
 	data := request.Data()
-	jsondata := JsonEncode(data)
+	jsondata := helper.JsonEncode(data)
 	loggerConfig.logFile.Write(jsondata)
 	newline := []byte("\n")
 	loggerConfig.logFile.Write(newline)
@@ -38,7 +39,7 @@ func LogRequest(request RequestInterface) {
 
 func LogResponse(response ResponseInterface) {
 	data := response.Data()
-	jsondata := JsonEncode(data)
+	jsondata := helper.JsonEncode(data)
 	loggerConfig.logFile.Write(jsondata)
 	newline := []byte("\n")
 	loggerConfig.logFile.Write(newline)
