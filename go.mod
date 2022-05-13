@@ -1,4 +1,4 @@
-module kkday/logger
+module github.com/mictsai60229/golang-logger
 
 go 1.17
 
